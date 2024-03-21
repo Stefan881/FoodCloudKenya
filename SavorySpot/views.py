@@ -101,31 +101,31 @@ def grocery(request):
     return render(request, 'Grocery.html', {})
 
 
-def make_an_order(request, id):
-    product = Product.objects.get(id=id)
-    if request.method == 'POST':
-        phone = request.POST['phone']
-        amount = product.price
-        access_token = MpesaAccessToken.validated_mpesa_access_token
-        api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-        headers = {"Authorization": "Bearer %s" % access_token}
-        request = {
-            "BusinessShortCode": LipanaMpesaPassword.Business_short_code,
-            "Password": LipanaMpesaPassword.decode_password,
-            "Timestamp": LipanaMpesaPassword.lipa_time,
-            "TransactionType": "CustomerPayBillOnline",
-            "Amount": amount,
-            "PartyA": phone,
-            "PartyB": LipanaMpesaPassword.Business_short_code,
-            "PhoneNumber": phone,
-            "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-            "AccountReference": "PYMENT001",
-            "TransactionDesc": "School fees"
-        }
+# def make_an_order(request, id):
+#     product = Product.objects.get(id=id)
+#     if request.method == 'POST':
+#         phone = request.POST['phone']
+#         amount = product.price
+#         access_token = MpesaAccessToken.validated_mpesa_access_token
+#         api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+#         headers = {"Authorization": "Bearer %s" % access_token}
+#         request = {
+#             "BusinessShortCode": LipanaMpesaPassword.Business_short_code,
+#             "Password": LipanaMpesaPassword.decode_password,
+#             "Timestamp": LipanaMpesaPassword.lipa_time,
+#             "TransactionType": "CustomerPayBillOnline",
+#             "Amount": amount,
+#             "PartyA": phone,
+#             "PartyB": LipanaMpesaPassword.Business_short_code,
+#             "PhoneNumber": phone,
+#             "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+#             "AccountReference": "PYMENT001",
+#             "TransactionDesc": "School fees"
+#         }
 
-        response = requests.post(api_url, json=request, headers=headers)
-        return HttpResponse("Your Payment Request Was Successful")
-    return render(request, 'Buy product.html', {'product': product})
+#         response = requests.post(api_url, json=request, headers=headers)
+#         return HttpResponse("Your Payment Request Was Successful")
+#     return render(request, 'Buy product.html', {'product': product})
 
 
 def add_product(request):
