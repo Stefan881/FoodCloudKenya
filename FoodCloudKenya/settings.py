@@ -32,7 +32,7 @@ ALLOWED_HOSTS += os.environ.get("ALLOWED_HOSTS").split()
 
 # Application definition
 
-SITE_ID = 2
+SITE_ID = 3
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -101,12 +101,27 @@ WSGI_APPLICATION = 'FoodCloudKenya.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default':dj_database_url.config(
-        default = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
-    )
+# DATABASES = {
+#     'default':dj_database_url.config(
+#         default = "sqlite:///" + os.path.join(BASE_DIR, "db.sqlite3")
+#     )
     
+# }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'foodcloudkenya',
+        'USER': 'postgres',
+        'PASSWORD': '12345678',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
 }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
