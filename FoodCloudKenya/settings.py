@@ -11,12 +11,12 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-load_dotenv(os.path.join(BASE_DIR/".eVar",".env"))
+# load_dotenv(os.path.join(BASE_DIR/".eVar",".env"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -25,10 +25,10 @@ load_dotenv(os.path.join(BASE_DIR/".eVar",".env"))
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG")
+DEBUG = os.environ.get("DEBUG","False").lower == "true"
 
-ALLOWED_HOSTS = ["127.0.0.1","stephen123456.pythonanywhere.com"]
-ALLOWED_HOSTS += os.environ.get("ALLOWED_HOSTS").split()
+# ALLOWED_HOSTS = ["127.0.0.1","stephen123456.pythonanywhere.com"]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split("")
 
 # Application definition
 
@@ -121,7 +121,11 @@ DATABASES = {
 }
 
 
+dj_database_url = os.environ.get("DATABASE_URL")
+DATABASES['default'] = dj_database_url.parse(dj_database_url)
 
+
+# 
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -157,7 +161,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = 'BASE_DIR/AllStatic/'
+# STATIC_ROOT = 'BASE_DIR/AllStatic/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
