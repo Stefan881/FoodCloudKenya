@@ -1,0 +1,65 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+    <br><br><br><br><br><br>
+         <div class="row d-flex col-4 m-auto">
+<p>Please fill out the form below for shipping:</p>
+     <form action="{% url 'Book-a-table-url' %}" method="post">
+            {% csrf_token %}
+          <div class="row">
+            <div class="col-lg-4 col-md-6 form-group">
+              <input type="name" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="name" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3 mt-md-0">
+              <input type="name" class="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="name" name="date" class="form-control" id="date" placeholder="Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="name" class="form-control" name="time" id="time" placeholder="Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <div class="validate"></div>
+            </div>
+            <div class="col-lg-4 col-md-6 form-group mt-3">
+              <input type="number" class="form-control" name="people" id="people" placeholder="# of people" data-rule="minlen:1" data-msg="Please enter at least 1 chars">
+              <div class="validate"></div>
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <textarea type="name" class="form-control" name="message" rows="5" placeholder="Message"></textarea>
+            <div class="validate"></div>
+          </div>
+{#          <div class="mb-3">#}
+{#            <div class="loading">Loading</div>#}
+{#            <div class="error-message"></div>#}
+{#            <div class="sent-message">Your booking request was sent. We will call back or send an Email to confirm your reservation. Thank you!</div>#}
+{#          </div>#}
+          <div class="text-center"><button type="submit">Book a Table</button></div>
+        </form>
+         </div>
+    <br><br>
+
+ <div class="row d-flex col-4 m-auto">
+ <p>Please complete your payment below:</p>
+      <form method="post" action="">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom mb-4" style="color: black">Paying for {{ product.name }}</legend>
+                <label>Amount</label><br>
+                <input  name="price" class="form-control" value="{{ product.price }}" readonly type="text"><br>
+                <input class="form-control" name="phone" placeholder="Enter Phone Number (2547...)" type="text"><br>
+            </fieldset>
+            <div class="form-group">
+                <input style="background-color: #cda45e;border-radius: 10px;width: 100px" value="Pay" type="submit">
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

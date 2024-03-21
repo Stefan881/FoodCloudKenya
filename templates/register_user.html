@@ -1,0 +1,18 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+    <br><br><br><br><br><br>
+   <div class = "col-md-6 offset-md-3" style="margin-bottom:40px;margin-top:40px">
+        <h1 style="color: black">Register</h1>
+    <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary" style="background-color: #cda45e;text-align: center" >SignUp</button>
+    </form>
+
+   {% load socialaccount %}
+    <h2>Google Login</h2>
+    <a href="{% provider_login_url 'google' %}?next=/index"><button style="border-radius:10px;background-color:sandybrown">Sign Up with Google</button></a>
+    </div>
+
+{% endblock %}
