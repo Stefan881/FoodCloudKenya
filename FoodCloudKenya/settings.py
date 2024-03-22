@@ -30,7 +30,7 @@ SECRET_KEY='django-insecure-g-x_b$l153fsmxt&v*%2(ci%-9lzgykk8!k7=0vw27u8)v)*b#'
 DEBUG=True
 
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
-ALLOWED_HOSTS = ['127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','foodcloudkenya-3.onrender.com']
 
 
 
@@ -137,7 +137,11 @@ DATABASES = {
 # DATABASES = {
 #     'default': db_from_env
 # }
-DATABASE_URL="postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya"
+
+DATABASES['default'] = dj_database_url.parse("postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya")
+
+
+#DATABASE_URL="postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya"
 
 
 # postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya
