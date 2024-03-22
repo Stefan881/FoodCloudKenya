@@ -27,10 +27,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY='django-insecure-g-x_b$l153fsmxt&v*%2(ci%-9lzgykk8!k7=0vw27u8)v)*b#'
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG","True").lower == "false"
-DEBUG=False 
+DEBUG=True
 
 # ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
-ALLOWED_HOSTS = ['127.0.0.1','localhost','foodcloudkenya-3.onrender.com']
+ALLOWED_HOSTS = ['foodcloudkenya-3.onrender.com','localhost','127.0.0.1']
 
 
 
