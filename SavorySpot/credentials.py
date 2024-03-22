@@ -11,19 +11,19 @@ class MpesaC2bCredential:
     api_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 
 
-# class MpesaAccessToken:
-#     r = requests.get(MpesaC2bCredential.api_URL,auth=HTTPBasicAuth(MpesaC2bCredential.consumer_key, MpesaC2bCredential.consumer_secret))
-#     mpesa_access_token = json.loads(r.text)
-#     validated_mpesa_access_token = mpesa_access_token["access_token"]
-
 class MpesaAccessToken:
-    try:
-        r = requests.get(MpesaC2bCredential.api_URL, auth=HTTPBasicAuth(MpesaC2bCredential.consumer_key, MpesaC2bCredential.consumer_secret))
-        r.raise_for_status()  # Raise an exception for HTTP errors
-        mpesa_access_token = json.loads(r.text)
-        validated_mpesa_access_token = mpesa_access_token["access_token"]
-    except requests.exceptions.RequestException as e:
-        print("Error making request to Mpesa API:", e)
+    r = requests.get(MpesaC2bCredential.api_URL,auth=HTTPBasicAuth(MpesaC2bCredential.consumer_key, MpesaC2bCredential.consumer_secret))
+    mpesa_access_token = json.loads(r.text)
+    validated_mpesa_access_token = mpesa_access_token["access_token"]
+
+# class MpesaAccessToken:
+#     try:
+#         r = requests.get(MpesaC2bCredential.api_URL, auth=HTTPBasicAuth(MpesaC2bCredential.consumer_key, MpesaC2bCredential.consumer_secret))
+#         r.raise_for_status()  # Raise an exception for HTTP errors
+#         mpesa_access_token = json.loads(r.text)
+#         validated_mpesa_access_token = mpesa_access_token["access_token"]
+#     except requests.exceptions.RequestException as e:
+#         print("Error making request to Mpesa API:", e)
         # Handle the error here, such as logging or raising a custom exception
 
 
