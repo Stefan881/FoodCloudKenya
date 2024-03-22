@@ -14,6 +14,7 @@ from pathlib import Path
 # from dotenv import load_dotenv
 import dj_database_url
 import os
+print(os.environ.get('DATABASE_URL'))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 # load_dotenv(os.path.join(BASE_DIR/".eVar",".env"))
@@ -22,13 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
-
+# SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY='django-insecure-g-x_b$l153fsmxt&v*%2(ci%-9lzgykk8!k7=0vw27u8)v)*b#'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower == "true"
+# DEBUG = os.environ.get("DEBUG","True").lower == "false"
+DEBUG=True
 
-# ALLOWED_HOSTS = ["127.0.0.1","stephen123456.pythonanywhere.com"]
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(",")
+# ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
+
+
+
+
 
 # Application definition
 
@@ -121,11 +127,20 @@ DATABASES = {
 }
 
 
-dj_database_url = os.environ.get("DATABASE_URL")
-DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# dj_database_url = os.environ.get("DATABASE_URL")
 
 
-# 
+# DATABASES['default'] = dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
+# db_from_env = dj_database_url.config()
+
+# DATABASES = {
+#     'default': db_from_env
+# }
+DATABASE_URL="postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya"
+
+
+# postgres://foodcloudkenya_user:8wDV7dRn3IHctOggkAA2RIT7VdqJa4rI@dpg-cnu6l87sc6pc73b6gr10-a.oregon-postgres.render.com/foodcloudkenya
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
